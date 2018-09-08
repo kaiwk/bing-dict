@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys
+import requests
+from bs4 import BeautifulSoup
+
+if len(sys.argv) >= 2:
+    search_word = sys.argv[1]
+else:
+    search_word = ''
+
+r = requests.get('https://cn.bing.com/dict/search?q={}'.format(search_word))
+
+bs = BeautifulSoup(r.text, 'html.parser')
+
+word_types = []
+definitions = []
+
+for e in bs.find_all('span', class_='pos'):
+    word_types.append(e.text)
+
+for e in bs.find_all('span', class_='def'):
+    definitions.append(e.text)
+
+for i, e in enumerate(word_types):
+    print(e, '\t', definitions[i])
