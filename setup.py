@@ -6,8 +6,8 @@ setup(
     packages=['bing-dict'],
     author='Wang Kai',
     author_email='kaiwkx@gmail.com',
+    url='https://github.com/kaiwk/bing-dict',
     install_requires=['requests', 'beautifulsoup4'], # external packages as dependencies
     scripts=['bing-dict/bd'],
-    license='MIT',
-    long_description=open('README.txt').read()
+    license='MIT'
 )
